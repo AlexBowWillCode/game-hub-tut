@@ -34,7 +34,7 @@ const useGames = () => {
 
       apiClient
         .get<FetchGamesResponse>("/games", {signal: controller.signal})
-        .then((res) => setGames(res.data.results))
+        .then((res) => (setGames(res.data.results), console.log(res.data.results)))
         .catch((err) => {
             if (err instanceof CanceledError) return;
             setError(err.message)}); 
